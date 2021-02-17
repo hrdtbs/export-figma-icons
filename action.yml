@@ -1,0 +1,15 @@
+name: 'export-figma-icons'
+description: 'Export Figma icons'
+inputs:
+  FIGMA_TOKEN:
+    description: 'set figma token'
+    required: true
+  FIGMA_FILE_URL:
+    description: 'set figma file url'
+    required: true
+  OUTPUT_DIR:
+    description: 'set output dir'
+    default: './build'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
