@@ -1,8 +1,7 @@
 name: "cron-example"
 on: 
-   push:
-#  schedule:
-#   - cron: "* */1 * * *"
+  schedule:
+   - cron: "0 10 * * 1"
 
 jobs:
   example:
@@ -21,6 +20,6 @@ jobs:
     - name: commit files
       run: |
         git add .
-        git commit -m "add ${{ join(fromJson(steps.figma.outputs.FILENAMES), ' icon,') }}"
+        git commit -m "feat(icons): add ${{ join(fromJson(steps.figma.outputs.FILENAMES), ', ') }}"
         git pull --rebase
         git push
