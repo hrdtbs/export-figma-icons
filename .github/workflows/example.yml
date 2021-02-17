@@ -1,0 +1,25 @@
+name: "cron-example"
+on: 
+  schedule:
+   - cron: "*/5 * * * *"
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      id: figma
+      with:
+        FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+        FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+    - name: git setting
+      run: |
+        git config --local user.email "harada.tsubasa.0422@gmail.com"
+        git config --local user.name "hrdtbs"
+    - name: commit files
+      run: |
+        git add .
+        git commit -m "add ${{ join(steps.figma.outputs.FILENAMES, ',') }}" -a
+        git pull --rebase
+        git push
