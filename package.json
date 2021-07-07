@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.7",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.24",
     "@types/node-fetch": "^2.5.8",
     "@vercel/ncc": "^0.27.0",
     "eslint": "^7.20.0",
